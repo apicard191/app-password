@@ -6,7 +6,7 @@ export class UserAPIService {
                 resolve({
                     username: username
                 });
-            }, 2000)
+            }, 500)
         });
     }
 }

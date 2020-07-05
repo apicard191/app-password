@@ -1,30 +1,22 @@
-// Components/FilmItem.js
-
 import React from 'react'
 import { StyleSheet, View, Text, Image } from 'react-native'
-import {TMDBApi} from '../API/TMDBApi';
-const client = new TMDBApi();
 
-class FilmItem extends React.Component {
+export default class Item extends React.Component {
   render() {
-    const film = this.props.film;
+    const item = this.props.item;
     return (
       <View style={styles.main_container}>
         <Image
           style={styles.image}
-          source={{uri: client.getImg(film.poster_path)}}
+          source={{uri: this.props.item.img}}
         />
         <View style={styles.content_container}>
           <View style={styles.header_container}>
-            <Text style={styles.title_text}>{film.title}</Text>
-            <Text style={styles.vote_text}>{film.vote_average}</Text>
+            <Text style={styles.title_text}>{this.props.item.title}</Text>
+            <Text style={styles.vote_text}>{this.props.item.vote_average}</Text>
           </View>
           <View style={styles.description_container}>
-            <Text style={styles.description_text} numberOfLines={6}>{film.overview}</Text>
-            {/* La propriété numberOfLines permet de couper un texte si celui-ci est trop long, il suffit de définir un nombre maximum de ligne */}
-          </View>
-          <View style={styles.date_container}>
-            <Text style={styles.date_text}>Sorti le {film.release_date}</Text>
+            <Text style={styles.description_text} numberOfLines={6}>{this.props.item.description}</Text>
           </View>
         </View>
       </View>
@@ -39,7 +31,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 120,
-    height: 180,
+    height: 120,
     margin: 5,
     backgroundColor: 'gray'
   },
@@ -77,6 +69,4 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     fontSize: 14
   }
-})
-
-export default FilmItem
+});

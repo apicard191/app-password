@@ -4,6 +4,6 @@ import Login from '../Components/Login';
 
 export default function LoginScreen({ navigation }) {
     return (
-        <Login onLogin={() => navigation.navigate('Search')}/>
+        <Login onLogin={() => navigation.navigate('List')}/>
     );
 }
