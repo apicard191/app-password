@@ -44,4 +44,7 @@ export class ItemAPIService {
             }, 500)
         });
     }
+    get(id) {
+        return items[id];
+    }
 }

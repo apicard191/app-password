@@ -1,25 +1,26 @@
 import React from 'react';
 import {ActivityIndicator, FlatList, StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
-import Item from './Item';
-import {ItemAPIService} from '../Service/API/ItemAPIService';
+import TeaserItem from './Item/TeaserItem';
+import {ItemManager} from '../Service/Manager/ItemManager';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 export default class List extends React.Component {
     constructor(props) {
         super(props)
+        this.navigation = this.props.navigation;
         this.term = '';
         this.state = {
             films: [],
             isLoading: false
         };
-        this.itemAPIService = new ItemAPIService();
+        this.itemManager = new ItemManager();
         this._load();
     }
 
     _load() {
         this.setState({isLoading: true});
-        this.itemAPIService.search(this.term).then(data => {
+        this.itemManager.search(this.term).then(data => {
             this.setState({items: data, isLoading: false});
         });
     }
@@ -59,7 +60,7 @@ export default class List extends React.Component {
                     style={styles.list_container}
                     data={this.state.items}
                     keyExtractor={(item) => item.id.toString()}
-                    renderItem={({item}) => <Item item={item}/>}
+                    renderItem={({item}) => <TeaserItem item={item} navigation={this.navigation}/>}
                 />
                 {this._displayLoading()}
             </View>
