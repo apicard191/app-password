@@ -1,8 +1,8 @@
 import React from 'react';
-import Search from './Components/Search';
+import Login from './Components/Login';
 
 export default function App() {
-  return (
-    <Search/>
-  );
+    return (
+        <Login/>
+    );
 }
