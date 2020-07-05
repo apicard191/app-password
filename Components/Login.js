@@ -1,5 +1,5 @@
 import React from 'react'
-import {ActivityIndicator, AsyncStorage, Button, StyleSheet, Text, TextInput, View} from 'react-native'
+import {ActivityIndicator, Button, StyleSheet, Text, TextInput, View} from 'react-native'
 import {UserService} from '../Service/UserService';
 
 export default class Login extends React.Component {
@@ -15,11 +15,11 @@ export default class Login extends React.Component {
     }
 
     _login() {
-        this.userService.login(this.username, this.password);
         this.setState({isLoading: true, hasError: false});
-        this.userService.login().then(data => {
+        this.userService.login(this.username, this.password).then(data => {
             this.setState({isLoading: false});
-        }).fail(data => {
+            this.props.onLogin();
+        }).catch(data => {
             this.setState({hasError: true});
         });
     }
