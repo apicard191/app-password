@@ -1,4 +1,4 @@
-export class UserAPIService {
+class UserAPIService {
     login(username, password) {
         return new Promise((resolve, reject) => {
             this.wait = setTimeout(() => {
@@ -10,3 +10,6 @@ export class UserAPIService {
         });
     }
 }
+const userAPIService = new UserAPIService();
+
+export default userAPIService;

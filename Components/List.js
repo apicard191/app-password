@@ -1,7 +1,7 @@
 import React from 'react';
 import {ActivityIndicator, FlatList, StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
 import TeaserItem from './Item/TeaserItem';
-import {ItemManager} from '../Service/Manager/ItemManager';
+import itemManager from '../Service/Manager/ItemManager';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 
@@ -14,13 +14,12 @@ export default class List extends React.Component {
             films: [],
             isLoading: false
         };
-        this.itemManager = new ItemManager();
         this._load();
     }
 
     _load() {
         this.setState({isLoading: true});
-        this.itemManager.search(this.term).then(data => {
+        itemManager.search(this.term).then(data => {
             this.setState({items: data, isLoading: false});
         });
     }

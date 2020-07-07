@@ -36,7 +36,7 @@ const items = [
     },
 ];
 
-export class ItemAPIService {
+class ItemAPIService {
     search(term) {
         return new Promise((resolve, reject) => {
             this.wait = setTimeout(() => {
@@ -48,3 +48,6 @@ export class ItemAPIService {
         return items[id];
     }
 }
+const itemAPIService = new ItemAPIService();
+
+export default itemAPIService;

@@ -1,14 +1,14 @@
-import {ItemAPIService} from '../API/ItemAPIService';
+import itemAPIService from '../API/ItemAPIService';
 
-export class ItemManager {
-    constructor(){
-        this.itemAPIService = new ItemAPIService();
-    }
+class ItemManager {
     search(term) {
-        return this.itemAPIService.search();
+        return itemAPIService.search();
     }
     get(id) {
-        return this.itemAPIService.get(id);
+        return itemAPIService.get(id);
 
     }
 }
+const itemManager = new ItemManager();
+
+export default itemManager;
